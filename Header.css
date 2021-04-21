@@ -1,0 +1,33 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none; 
+}
+header{
+    /* margin-top:100px; */
+    height: 50px;
+    line-height: 48px;
+    background-color:#93BCD8;
+    text-align: center; 
+    margin-left:100px;
+    margin-right:100px;
+}
+nav{
+    width: 1000px; 
+    margin: 0 auto; 
+}
+header a{
+    display: inline-block;
+    text-align: center;
+    height: 48px;
+    color: #fff;  
+    margin-left: 40px;
+    width: 100px;
+    font-size: 20px
+}
+header .active{
+    border-bottom: 2px solid #CEE9B6;
+    color:  #CEE9B6;
+}
