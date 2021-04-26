@@ -1,13 +1,7 @@
-import './Activity.css'
+import './Value.css'
 import React, { Component } from 'react'
-import { Link,Switch } from 'react-router-dom'
-import {RouteWithSubRoutes} from '../../App'
-//import ActivityDetail from './ActivityDetail';
-import Value from './Value'
-
-
-class Activity extends Component {
-    constructor(){
+class Value extends Component {
+    constructor() {
         super();
         this.state={
             data:[
@@ -26,13 +20,12 @@ class Activity extends Component {
             ],
         }
     }
-    onLoad(){
-        this.props.history.push({ path : '/value' ,state : { key1: 'idx'} })
-
-    }    
-    // onChangeState(name){
-    //     this.setState(name)
-    // }
+    
+    componentWillMount(){
+        //console.log(this.props.location)//传递过来的所有参数
+        console.log(this.props.location.state.key1)
+    }
+    //let id= this.props.location.state.key1;
     // componentDidMount(){
     //     fetch('/text',{
     //         method:'get',
@@ -43,20 +36,13 @@ class Activity extends Component {
     //     })
     // }
     render() {
-        return(
+        return (
             <div class="div1">
-                <h1>活动通知</h1>
-               {
-                   this.state.data.map((val,idx)=>(
-                       <div key={{idx}} class="div2">
-                           {/* {console.log(idx)} */}
-                           <span>活动日期：{val.time} </span>
-                           <Link to={{pathname:"/value",state:{key1:idx}}}>{val.text}</Link>
-                       </div>
-                    ))
-               } 
+                <h1 style={{textAlign:'center'}}>{this.state.data[this.props.location.state.key1].title}</h1>
+                <span>{this.state.data[this.props.location.state.key1].text}</span>
             </div>
         )
     }
 }
-export default Activity;
+
+export default Value;

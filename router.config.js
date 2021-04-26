@@ -3,9 +3,14 @@ import Pay from './dormitory/pay/Pay';
 import Repair from './dormitory/repair/Repair';
 import Forum from './dormitory/forum/Forum';
 import Daka from './dormitory/daka/Daka';
-
-
 import Activity from './dormitory/activity/Activity';
+import Value from './dormitory/activity/Value';
+
+import Lodging from './dormitory/pay/detail/Lodging';
+import Air from './dormitory/pay/detail/Air';
+import Meal from './dormitory/pay/detail/Meal';
+import Water from './dormitory/pay/detail/Water';
+
 
 const routes=[
     {
@@ -17,7 +22,24 @@ const routes=[
         path:'/pay',
         component:Pay,
         pri:true,
-      
+        routes:[
+            {
+                path:'/pay/lodging',
+                component:Lodging,
+            },
+            {
+                path:'/pay/air',
+                component:Air,
+            },
+            {
+                path:'/pay/meal',
+                component:Meal,
+            },
+            {
+                path:'/pay/water',
+                component:Water,
+            },
+        ]
     },
     {
         path:'/repair',
@@ -32,18 +54,14 @@ const routes=[
         path:'/daka',
         component:Daka
     },
-    // {
-    //     path:'/login',
-    //     component:Login
-    // },
     {
         path:'/activity',
         component:Activity
     },
+    {
+        path:'/value',
+        component:Value
+    }
   
-    // {
-    //     path:'/up',
-    //     component:Up
-    // }
 ]
 export default routes;
