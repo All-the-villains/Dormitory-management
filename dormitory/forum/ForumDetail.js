@@ -1,6 +1,6 @@
-
 import React, { Component } from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 
 let storage=window.localStorage;
 
@@ -40,7 +40,7 @@ text:'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 time:'2021-4-21'
 }]
 
-export default class ForumDetail extends Component {
+class ForumDetail extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -189,13 +189,8 @@ export default class ForumDetail extends Component {
         }}/>}
 
             </div>
-            
-                
-
    
         );
     }
-
-
-    
 }
+export default withRouter(ForumDetail)
