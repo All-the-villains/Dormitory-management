@@ -1,4 +1,182 @@
-.bg{
+/* .bg{
     background:url(http://49.234.225.248:1111/image/b3.jpg) no-repeat center;
     height:800px;
-}
+} */
+
+    .container{
+        width: 100%;
+        margin: auto;
+        /* position: relative; */
+    }
+    /* .inputs{
+        position: absolute;
+        top: 5%;
+        left:70%;
+        width: 25%;
+        height: 25px;
+        border-radius: 15px;
+        background-color: lightcoral;
+        padding: 0;
+        
+    } */
+    .search{
+        position: absolute;
+        top: 5%;
+        left:70%;
+        width: 20%;
+        height: 25px;
+        border-radius: 15px;
+        outline: none;
+        padding-left: 10px;
+    }
+    .divinput{
+        width:50%;
+        height: 200px;
+        background-color: hotpink;
+        position:absolute;
+        /* top: -50%; */
+        top:10%;
+        transition: width 1s;
+    }
+    .search:focus {
+        border:1px solid lightblue;
+    }
+    .search:focus .divinput{
+       width: 100%;
+    }
+    
+    .block{
+        width: 87%;
+        height: 300px;
+        background-color: #fff;
+        margin: auto;
+    }
+    .news{
+        float: left;
+        width:40%;
+        margin-left: 5%;
+        margin-top: 20px;
+    }
+    .news-Title{
+        display: inline-block;
+        width:30%;
+        height: 55px;
+        background-color: #94bcd6;
+        font-size: 25px;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 10px;
+        text-align: center;
+        /* padding: 0 10px; */
+        line-height: 55px;
+    }
+    .newsMore{
+        display: inline-block;
+        font-size: 18px;
+        margin-left: 55%;
+    }
+    .news .firsthr{
+        border:none;
+        height: 5px;
+        background-color: #747d9e;
+    }
+    .news .newsContent a{
+        display: inline-block;
+        padding: 10px;
+        font-size: 18px;
+        color: black;
+    }
+    .news .newsContent hr{
+        border:1px dotted #94bcd6;
+    }
+    .time{
+        color: #b3b3b3;
+    }
+    .activity{
+        float: right;
+        width:40%;
+        margin-right: 5%;
+        margin-top: 20px;
+    }
+    .activity-Title{
+        display: inline-block;
+        width:30%;
+        height: 55px;
+        background-color: #94bcd6;
+        font-size: 25px;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 10px;
+        /* padding: 0 10px; */
+        text-align: center;
+        line-height: 55px;
+    }
+    .activityMore{
+        display: inline-block;
+        font-size: 18px;
+        margin-left: 55%;
+    }
+    .activity .firsthr{
+        border:none;
+        height: 5px;
+        background-color: #747d9e;
+    }
+    .activity .activityContent a{
+        display: inline-block;
+        padding: 10px;
+        font-size: 18px;
+        color: black;
+    }
+    .activity .activityContent hr{
+        border:1px dotted #94bcd6;
+    }
+    .network{
+        width: 91%;
+        height: 200px;
+        margin: auto;
+        background-color: #fff;
+        margin-top: 100px;
+    }
+    .network .network-Title{
+        display: inline-block;
+        width:15%;
+        height: 55px;
+        background-color: #94bcd6;
+        font-size: 25px;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 10px;
+        text-align: center;
+        /* padding: 0 10px; */
+        line-height: 55px;
+    }
+    .network hr{
+        border:none;
+        height: 5px;
+        background-color: cyan;
+    }
+    .network li{
+        list-style-type: none;
+        display: inline-block;
+        margin-left: 8%;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .network li p{
+        color: #000;
+        font-size: 20px;
+    }
+    footer{
+        width:87%;
+        height: 130px;
+        margin: auto;
+        margin-top: 50px;
+        background-color: #b6e5d9;
+        text-align: center;
+        padding-top:50px ;
+    }
+    footer span{
+        color: #000;
+        margin-left: 5px;
+    }
+    footer img{
+        vertical-align: middle;
+    }
+

@@ -1,44 +1,38 @@
-import './Activity.css'
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 
-class Activity extends Component {
-    constructor(){
-        super();
+
+
+
+import React, { Component } from 'react'
+import {withRouter} from 'react-router-dom'
+import Login from '../login/Login'
+
+import ActivityDetail from './ActivityDetail'
+ class Activity extends Component{
+    constructor(props){
+        super(props);
         this.state={
-            data:[],
+          data:'',
+
         }
     }
-    onLoad(){
-        this.props.history.push({ path : '/value' ,state : { key1: 'idx'} })
-        
-    }    
-    componentDidMount(){
-        fetch('/activity',{
-            method:'get',
-            mode:'cors',
-            headers:{'Content-Type':'application/json'},
-        }).then(res=>res.json())
-        .then(res=>{
-            this.setState({data:res});
-            //console.log(res);
-            //console.log(this.state.data);
-        })
-    }
-    render() {
+   handle=()=>{
+       var key=localStorage.getItem('username')
+       this.state.data=key
+    //    console.log(this.state.data)
+   }
+   
+    
+    render(){
+      
         return(
-            <div class="div1">
-                <h1>活动通知</h1>
+            <div onLoad={this.handle()}>
                 {
-                   this.state.data.map((val,idx)=>(
-                       <div key={{idx}} class="div2">
-                           <span>活动日期：{val.atime} </span>
-                           <Link to={{pathname:"/value",state:{key1:idx,data:this.state.data}}} style={{marginLeft:20}}>{val.atitle}</Link>
-                       </div>
-                    ))
-               } 
+                    (this.state.data==null)?<Login />:
+                    <ActivityDetail />
+                }
             </div>
         )
     }
+
 }
-export default Activity;
+export default withRouter(Activity)
