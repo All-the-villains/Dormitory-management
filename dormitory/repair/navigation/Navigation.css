@@ -1,0 +1,26 @@
+.navigation{
+    margin-left:70px;
+    margin-top:50px;
+    width:200px;
+    background-color:#93BCD8;
+    text-align:center;
+    font-size:20px;
+    border:1px #CEE9B6 solid
+}
+.navigation li{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: black;
+    border:1px #CEE9B6 solid;
+}
+.navigation a{
+    color:black;
+}
+
+.navigation .expenses{
+    color:  #CEE9B6;
+}
+.detail li{
+    font-size: 20px;
+    margin:25px;
+}

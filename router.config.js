@@ -11,6 +11,10 @@ import Air from './dormitory/pay/detail/Air';
 import Meal from './dormitory/pay/detail/Meal';
 import Water from './dormitory/pay/detail/Water';
 
+import Appliances from './dormitory/repair/detail/Appliances';
+import Furniture from './dormitory/repair/detail/Furniture';
+import Windows from './dormitory/repair/detail/Windows';
+
 
 const routes=[
     {
@@ -44,7 +48,22 @@ const routes=[
     {
         path:'/repair',
         component:Repair,
-        pri:true
+        pri:true,
+        routes:[
+            {
+                path:'/repair/appliances',
+                component:Appliances,
+            },
+            {
+                path:'/repair/windows',
+                component:Windows,
+            },
+            {
+                path:'/repair/furniture',
+                component:Furniture,
+            }
+        ]
+
     },
     {
         path:'/forum',

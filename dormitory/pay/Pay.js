@@ -1,11 +1,10 @@
-import './Repair.css'
 import React,{ Fragment } from 'react'
 import {NavLink, Switch, withRouter} from 'react-router-dom'
-import './Repair.css'
+import './Pay.css';
 import {RouteWithSubRoutes} from '../../App';
 //二级路由里先将子路由拿过来，然后在子路由里再次调用一级路由
 import Navigation from './navigation/Navigation';
-const Repair =({routes})=>{
+const Pay =({routes})=>{
     return(
         <Fragment>
             <div style={{float:'left',marginLeft:"100px"}}>
@@ -19,4 +18,4 @@ const Repair =({routes})=>{
         </Fragment>
     )
 }
-export default withRouter(Repair);
+export default withRouter(Pay);
