@@ -3,6 +3,8 @@ import {BrowserRouter as Router,Redirect,Route,Switch} from 'react-router-dom'
 import Header from './Header';
 import routes from './router.config';
 import Image from './Image'
+import Det from './det'
+
 //权限路由 （登陆权限，将子路由往下传递）
 function PrivateRoute({component:Com,...rest}){
 	return (
@@ -42,6 +44,7 @@ const App =()=>{
 			<Header />
 			<Switch>
 				{routes.map((route)=><RouteWithSubRoutes {...route}/>)}
+				<Route path='/home/detail' component={Det} />
 			</Switch>
 		</Router>
 	</div> 
