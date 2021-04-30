@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0
+}
+.div{
+    width:350px;
+    height:300px;
+    border: 1px grey solid;
+    position: absolute;
+    top:200px;
+    left:520px;
+}
+.username{
+    position:'relative';
+}
+.password{
+    position:'relative';
+}
+#login{
+    display: block;
+    margin: 60px auto 0;
+    width: 305px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    background: #3D84FF;
+}
