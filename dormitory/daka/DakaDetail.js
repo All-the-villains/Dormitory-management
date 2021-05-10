@@ -1,45 +1,59 @@
 import './Daka.css'
 import React, { Component } from 'react'
-// import { Map, Marker } from 'react-amap'
-// import { Form, FormItem, Input, AMap, getFieldDecorator, setFieldsValue, getFieldValue } from 'react'
-
-
-class DakaDetail extends Component {
-    constructor() {
-        super();
+import AMap from 'AMap';
+export default class Daka extends Component {
+    Rad(d) {
+        return d * Math.PI / 180.0;
     }
-    //搜索的过程中使用高德地图地理编码将地址转化成经纬度，如果要实现第二个需求，需要使用逆地理编码从地图上获取经纬度在转化成地址
-    // onSearchAddress = () => {
-    //     var address = this.mRegion;
-    //     fetch('https://restapi.amap.com/v3/geocode/geo?key=320f4399064a7d0643ec6bddddf04d15' & address == '+address')
-    //         .then(res => {
-    //             if (res.ok) {
-    //                 res.json().then(data => {
-    //                     this.setState({ dict: data });
-    //                     var list = this.state.dict.geocodes;
-    //                     var geocodes = list[0]['location'].split(',');
-    //                     this.mLng = parseFloat(geocodes[0]); //经度
-    //                     this.mLat = parseFloat(geocodes[1]); //维度
-    //                     this.setState({
-    //                         longitude: this.mLng,
-    //                         latitude: this.mLat,
-    //                     })
-    //                 })
-    //             }
-    //         });
-    //     this.setState({})
-    // };
+    handleMap() {
+        console.log(window.lat)
+        console.log(window.lng)
+        var radLat1 = this.Rad(window.lat);
+        var radLat2 = this.Rad(37.997294);
+        var a = radLat1 - radLat2;
+        var b = this.Rad(window.lng) - this.Rad(114.520548);
+        var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
+        s = s * 6378.137;
+        s = Math.round(s * 10000) / 10000;
+        s = s.toFixed(2)  //保留两位小数
+        // console.log(s)
+        if (s < 1.0) {
+            alert('打卡成功')
+        }
+        else {
+            alert('不在范围内')
+        }
+
+    }
+
     render() {
         return (
-            <div style={{ width: '500px' }}>
-                {/* <Map amapkey={'320f4399064a7d0643ec6bddddf04d15'} zoom={6} plugins={['ToolBar']}>
-                    <Marker position={{ longitude: this.state.longitude, latitude: this.state.latitude }} />
-                </Map> */}
-                这是地图打卡
-            </div>
+            <div className='Daka'>
+                <div className='address' id="container" >
 
+                </div>
+                <button class='but' onClick={() => this.handleMap()}>打卡</button>
+            </div>
         )
     }
-}
+    componentDidMount(){
+        let lat1 = 0,
+            lng1 = 0;
+        setTimeout(() => {
+            //console.log(window.lat);
+            //console.log(window.lng);
+            lat1 = window.lat;
+            lng1 = window.lng;
+        },1000); //因为放在react的html和其他js文件是同时执行的，所以在其他页面请求的时候可能获取不到值，所以用延时器的方式能够获取到
+        var map = new AMap.Map('container',{
+            zoom: 10,  //设置地图显示的缩放级别
+            center: [lng1,lat1],//设置地图中心点坐标
+            layers: [new AMap.TileLayer.Satellite()],  //设置图层,可设置成包含一个或多个图层的数组
+            mapStyle: 'amap://styles/whitesmoke',  //设置地图的显示样式
+            viewMode: '2D',  //设置地图模式
+            lang:'zh_cn',  //设置地图语言类型
+        });
+        
+    }
 
-export default DakaDetail;
+}
