@@ -1,0 +1,35 @@
+.t2{
+    margin-top: 20px;
+    text-align: center;
+}
+.t2 li{
+    height: 50px;
+    line-height: 50px;
+    display: inline-block;
+    text-align: center;
+    padding: 0 5px;
+    width: 170px;
+    border-left: solid 1px #000;
+    border-top: solid 1px #000;
+    border-bottom: solid 1px #000;
+    background-color: #8FC798;
+}
+.t2 li:last-child{
+    border-right: solid 1px #000;
+}
+.c2{
+    text-align: center;
+}
+.c2 li{
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    text-align: center;
+    padding: 0 5px;
+    width: 170px;
+    border-left: solid 1px #000;
+    border-bottom: solid 1px #000;
+}
+.c2 li:last-child{
+    border-right: solid 1px #000;
+}
