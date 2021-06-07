@@ -1,0 +1,39 @@
+.title11{
+    margin-top: 20px;
+    text-align: center;
+}
+.title11 li{
+    height: 50px;
+    line-height: 50px;
+    display: inline-block;
+    text-align: center;
+    padding: 0 5px;
+    border-left: solid 1px #000;
+    border-top: solid 1px #000;
+    border-bottom: solid 1px #000;
+    background-color: #8FC798;
+}
+.title11 li:last-child{
+    border-right: solid 1px #000;
+}
+.con11{
+    text-align: center;
+}
+.con11 li{
+    height: 50px;
+    line-height: 50px;
+    display: inline-block;
+    text-align: center;
+    padding: 0 5px;
+    border-left: solid 1px #000;
+    border-bottom: solid 1px #000;
+}
+.con11 li:last-child{
+    border-right: solid 1px #000;
+}
+.put1{
+    margin-left: 1000px;
+    width: 150px;
+    height: 20px;
+    line-height: 20px;
+}

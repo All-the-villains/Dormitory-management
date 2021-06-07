@@ -1,81 +1,35 @@
-import './Blog.css'
 import React, { Component } from 'react'
+import {withRouter} from 'react-router-dom'
+import Login from './Login'
+import BlogDetail from './BlogDetail'
 
-export default class Blog extends Component {
-    constructor(){
-        super();
+ class Blog extends Component{
+    constructor(props){
+        super(props);
         this.state={
-            id:'',
-          texts:[],
+          data:'',
         }
+       
+    
     }
-    componentDidMount(){
-        fetch('/todolist',{
-            method:'get',
-            mode:'cors',
-            headers:{'Content-Type':'application/json'},
-        }).then(res=>res.json())
-        .then(res=>{
-            this.setState({texts:res})
-        })
-    }
-    reload(){
-        this.props.history.go(0);
-    }
-    inputChangeFirst(e){
-        this.setState({
-            id:e.target.value,
-        })
-    }
-    find() {
-        if (this.state.id == '') {
-            alert('未输入学号。请输入学号')
-        } else {
-            fetch('/searchtodolist', {
-                method: 'post',
-                mode: 'cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ "tostuid": this.state.id }),
-            }).then(res => {
-                //console.log(JSON.stringify(param))
-                if (res.status === 200) {
-                    res.json().then(res=>{
-                        this.setState({ texts:res })
-                    },(err)=>{
-                        console.log('失败'+err)
-                        alert('没有对应信息或是学号错误')
-                    }
-                    )
+   handle=()=>{
+       var key=localStorage.getItem('username')
+       this.state.data=key
+    //    console.log(this.state.data)
+   }
+   
+    
+    render(){
+      
+        return(
+            <div onLoad={this.handle()}>
+                {
+                    (this.state.data==null)?<Login />:
+                    <BlogDetail />
                 }
-            }
-            )
-        }
-    }
-    render() {
-        return(<div>
-            <input type='text'  onChange={(e)=>this.inputChangeFirst(e)} className='put4'></input>
-            <button onClick={() =>this.find()}>查询</button>
-            <div>
-                <ol className='ti'>
-                    <li style={{width:200}}>学生学号</li>
-                    <li style={{width:300}}>打卡时间</li>
-                    <li style={{width:100}}>打卡结果</li>
-                </ol>
             </div>
-        <div>
-            {
-                (this.state.texts==0)?null:
-                this.state.texts.map((text)=>{
-                    return(
-                        <ol className='co'>
-                            <li style={{width:200}}>{text.tostuid}</li>
-                            <li style={{width:300}}>{text.totime}</li>
-                            <li style={{width:100}}>{text.tores}</li>
-                        </ol>
-                    )
-                })
-            }
-        </div>
-    </div>)
+        )
     }
+
 }
+export default withRouter(Blog)
