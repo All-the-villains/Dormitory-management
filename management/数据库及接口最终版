@@ -1,0 +1,122 @@
+                       Table "public.student"  学生信息表
+  Column   |         Type          | Collation | Nullable | Default 
+-----------+-----------------------+-----------+----------+---------
+ stuid     | character varying(15) |           | not null | 学生id
+ stupass   | character varying(15) |           | not null | 密码
+ stuname   | character varying(10) |           | not null | 姓名
+ stusex    | character varying(2)  |           | not null | 性别
+ stuaccnum | character varying(15)  |           | not null | 宿舍号
+ stuimg    | character varying(100) |           | not null |图片
+ stunick   | character varying(30)  |           |          | 昵称
+ stubui    | character varying(30)  |           |          | 宿舍楼
+
+                       Table "public.money"   缴费表
+ Column  |         Type          | Collation | Nullable | Default 
+---------+-----------------------+-----------+----------+---------
+ mid     | character varying(15) |           | not null | 表单号
+ mname   | character varying(15) |           | not null | 姓名
+ mmoney  | numeric(6,2)          |           | not null | 缴费金额
+ mstuid  | character varying(15) |           |          |学生学号
+ maccnum | character varying(15)  |           | not null | 宿舍号
+ mkind   | character varying(20) |           |          | 缴费种类
+ mbuild  | character varying(20) |           |          | 缴费楼
+ mtime   | character varying(20) |           |          | 缴费时间
+
+                        Table "public.fix"    维修表
+ Column  |         Type          | Collation | Nullable | Default 
+---------+-----------------------+-----------+----------+---------
+ fid     | character varying(15) |           | not null | 表单号
+ fstuid  | character varying(15) |           | not null | 学生学号
+ fname   | character varying(15) |           | not null | 姓名
+ fhappen | character varying(50) |           | not null | 形况叙述
+ faccnum | character varying(15)  |           | not null | 宿舍号
+ fkind   | character varying(20) |           |          |   维修种类
+ fbuild  | character varying(20) |           |          |   维修楼
+ ftime   | character varying(20) |           |          |   维修时间
+
+                     Table "public.activity"   活动表
+ Column  |         Type          | Collation | Nullable | Default 
+---------+-----------------------+-----------+----------+---------
+ aid     | character varying(15) |           | not null | 活动号
+ atime   | character varying(15) |           | not null | 时间
+ atitle  | character varying(20) |           | not null | 标题
+ aperiod | character varying(30) |           | not null | 持续时间
+ atext   | character varying(50) |           | not null |情况说明 最多50个字
+
+                       Table "public.bbbb"  论坛表
+ Column |          Type          | Collation | Nullable | Default
+--------+------------------------+-----------+----------+---------
+ bid    | character varying(20)  |           | not null |  论坛id
+ bname  | character varying(20)  |           | not null |发帖人姓名
+ bimg   | character varying(150) |           | not null | 发帖人头像
+ bstu   | character varying(15)  |           | not null | 学号id
+ btime  | character varying(30)  |           | not null | 发帖时间
+ btext  | character varying(150) |           | not null | 发帖内容
+ brep   | character varying(15)  |           | not null | 回复列表号
+Indexes:
+    "bbbb_pkey" PRIMARY KEY, btree (bid)
+
+                       Table "public.manage" 宿管表
+ Column  |          Type          | Collation | Nullable | Default
+---------+------------------------+-----------+----------+---------
+ maid    | character varying(4)   |           | not null | 宿管id
+ maimg   | character varying(150) |           | not null | 宿管照片
+ maname  | character varying(20)  |           | not null | 宿管姓名
+ matel   | character varying(30)  |           | not null | 宿管电话
+ mabuild | character varying(20)  |           | not null | 宿管管理宿舍
+Indexes:
+    "manage_pkey" PRIMARY KEY, btree (maid)
+
+                     Table "public.todolist"  打卡表
+ Column  |         Type          | Collation | Nullable | Default
+---------+-----------------------+-----------+----------+---------
+ toid    | character varying(10) |           | not null | 打卡id
+ tostuid | character varying(15) |           | not null | 所属学生id
+ totime  | character varying(30) |           | not null | 打卡时间
+ tores   | character varying(10) |           | not null | 打卡结果
+Indexes:
+    "todolist_pkey" PRIMARY KEY, btree (toid)
+
+                       Table "public.reply"  回复表
+ Column |          Type          | Collation | Nullable | Default
+--------+------------------------+-----------+----------+---------
+ rid    | character varying(15)  |           | not null | 回复的id 
+ rname  | character varying(10)  |           | not null |  回复人的昵称
+ rbbb   | character varying(20)  |           | not null |  回复帖子的id
+ rtext  | character varying(100) |           | not null |  回复的内容
+Indexes:
+    "reply_pkey" PRIMARY KEY, btree (rid)
+
+接口说明：全部使用端口5566
+/stuadd添加学生信息
+/student 查询学生信息
+/monadd 添加缴费信息
+/money 查询缴费信息
+/fixadd 添加维修信息
+/fix 查询维修信息
+/actadd添加活动信息
+/activity 查询活动信息
+/delstu 删除学生信息
+/delmoney 删除缴费单信息
+/delfix 删除维修信息
+/delact 删除活动信息
+/bbbadd 新增论坛
+/bbbb 查询论坛
+/delbbb 删除论坛
+/manadd 添加宿管
+/manage  查询宿管信息
+/delman 删除宿管
+/toadd 添加打卡信息
+/todolist 查询打卡信息
+/delto 删除打卡信息
+/namechange 修改昵称 传入stunick stuid 两项 要更改的名字和对应的学号
+/imagechange 修改头像 传入stuimg stuid 两项 更换的图片的网络地址和学号
+/readd 添加评论
+/reply 查看对应评论 使用post请求，传入想查询的论坛留言id
+/delre 删除该评论
+查询全部根据学号进行
+/searchstudent 查询学生信息 
+/searchmoney 查询缴费
+/searchfix 查询维修
+/searchbbbb 查询论坛
+/searchtodolist 查询打卡
